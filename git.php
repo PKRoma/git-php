@@ -395,7 +395,7 @@ function html_shortlog($proj, $lines)   {
       echo html_ref( array('dl'=>"none"), "<img src=\"");
   }
   echo "</td><td></td><td></td><td></td></tr></div>\n";
-  for ($i = 0; ($i < $lines) && ($order[$i]!= ""); $i++)  {
+  for ($i = 0; ($i < $lines) && (count($order) > $i && $order[$i]!= ""); $i++)  {
     $c = git_commit($proj, $order[$i]);
     //print_r($c);
     $date = date($git_date_format, (int)$c['date']);
@@ -405,7 +405,7 @@ function html_shortlog($proj, $lines)   {
     $auth = short_desc($c['author'], 25);
     $tid = $c['tree'];
     // different ways of displaying diff
-    if( $_GET['a'] == "commitdiff" ){
+    if(isset($_GET['a']) && $_GET['a'] == "commitdiff" ){
       if( $_GET['h'] == $cid )
         $diff = "diff";
       else if( $_GET['hb'] == $cid )
@@ -431,7 +431,7 @@ function html_shortlog($proj, $lines)   {
                                  echo "<tags>".$symbolic."</tags> ";
     echo $mess;
     echo "</td><td>$diff | $tree | ".get_project_link($proj, "targz", $cid)." | ".get_project_link($proj, "zip", $cid)."</td></tr>\n"; 
-    if( $_GET['a'] == "commitdiff" ) echo "<tr class=\"inl\"><td>-</td></tr>\n";
+    if(isset($_GET['a']) && $_GET['a'] == "commitdiff" ) echo "<tr class=\"inl\"><td>-</td></tr>\n";
   }
   echo "<tr class=\"inl\" ><td></td><td>";
   for ($i = 0; $i < count($shortc["bot"]); $i++ ){
@@ -609,7 +609,10 @@ function git_commit($proj, $cid)  {
           $commit["commit_id"] = $d[0];
           break;
         case "parents":
-          $commit["parent"] = $d[0];
+	  if(!empty($d))
+	    $commit["parent"] = $d[0];
+	  else
+	     $commit["parent"] = "";
           break;
         case "tree":
           $commit["tree"] = $d[0];
@@ -1269,7 +1272,7 @@ function merge_slice( $x, $parents, $pin )
   $dr_sl_brcol[$x] = "."; // erase the bold branch of this column
 
   for( $i = 0; $i < $columns; $i++ )
-    if( $pin[$i] == $parents[0] )
+    if(!empty($parents) && $pin[$i] == $parents[0] )
       $dr_sl_brcol[$i] = "#"; // the vertical becomes branch vertical
                               }
 

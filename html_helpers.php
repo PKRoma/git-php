@@ -93,6 +93,15 @@ function html_header()  {
     
 }
 
+function html_project_management()
+{
+  echo "<div class='githead'>";
+  echo "<a href='manage.php?action=create'>Create new project</a>";
+  echo "</div>";
+html_spacer();
+
+}
+
 function html_breadcrumbs()  {
   echo "<div class=\"githead\">\n";
   $crumb = "<a href=\"".sanitized_url()."\">projects</a> / ";

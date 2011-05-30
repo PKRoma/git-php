@@ -198,6 +198,8 @@ html_header();
 
 html_style();
 
+html_project_management();
+
 html_breadcrumbs();
     
 html_pages();
@@ -206,7 +208,7 @@ if (isset($_GET['p']))  {
   html_spacer();
   html_summary($_GET['p']);
   html_spacer();
-  if ($_GET['a'] == "commitdiff"){
+  if (isset ($_GET['a']) && $_GET['a'] == "commitdiff"){
     html_title("Changes");
     html_diff($_GET['p'], $_GET['h']);
   }

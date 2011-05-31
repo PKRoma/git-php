@@ -359,6 +359,7 @@ function html_tree($proj, $tree)   {
 
 function html_shortlog($proj, $lines)   {
   global $cache_name,$repo_http_relpath,$branches,$tags,$nr_of_shortlog_lines,$git_date_format;
+  global $php_git_relpath;
   $page=0;
   $shortc["top"] = array();
   $shortc["bot"] = array();
@@ -425,7 +426,7 @@ function html_shortlog($proj, $lines)   {
     else
       $tree = html_ahref( array( 'p'=>$_GET['p'], 'a'=>"jump_to_tag", 'tag'=>$cid, 'tr'=>$tid, 't'=>$tid, 'pg'=>"" )) ."tree</a>";
     echo "<tr><td>$date</td>";
-    echo "<td>".html_ahref(array( 'p'=>$_GET['p'], 'a'=>"jump_to_tag", 'tag'=>$cid ))."<img src=\"" . $repo_http_relpath  . $cache_name . $proj. "/graph-".$cid.".png\" /></a></td>";
+    echo "<td>".html_ahref(array( 'p'=>$_GET['p'], 'a'=>"jump_to_tag", 'tag'=>$cid ))."<img src=\"" . $php_git_relpath  . $cache_name . $proj. "/graph-".$cid.".png\" /></a></td>";
     echo "<td>{$auth}</td><td>";
     if( in_array($cid,$branches) ) foreach( $branches as $symbolic => $hashic ) if( $hashic == $cid ) 
                                      echo "<branches>".$symbolic."</branches> ";

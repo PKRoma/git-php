@@ -144,7 +144,13 @@ function html_footer($text = '')  {
     echo "<a class=\"rss_logo\" href=\"".sanitized_url()."p={$_GET['p']}&dl=rss2\" >RSS</a>\n";
   }
 
-  if ($git_logo)    {
+  if(isset($text))
+  {
+    echo $text;
+  }
+
+  if ($git_logo)    
+  {
     echo "<a href=\"http://www.kernel.org/pub/software/scm/git/docs/\">" . 
       "<img src=\"".sanitized_url()."dl=git_logo\" style=\"border-width: 0px;\"/></a>\n";
   }

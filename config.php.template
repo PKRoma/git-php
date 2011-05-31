@@ -28,6 +28,10 @@
     
     /* The directory where repo directories resist */
     $repo_directory = "";
+    /*enter the relative path to the git-php dir, as you would access if from the browser*/
+    $php_git_relpath = "";
+    /*enter the full path to the git-php scripts*/
+    $php_git_directory = "";
     
     /* The date format to show the dates of commits */
     $git_date_format = 'd.m.Y (H:i)';

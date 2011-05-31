@@ -268,7 +268,7 @@ function html_help($proj)    {
   echo "<table>\n";
   echo "<tr><td>To clone: </td><td>git clone ";
   echo "$http_method_prefix";
-  echo "$proj yourpath</td></tr>\n";
+  echo "$proj &lt;yourpath&gt;</td></tr>\n";
   echo "<tr><td>To communicate: </td><td><a href=$communication_link>Visit this page</a></td></tr>";
   echo "</table>\n";
 }

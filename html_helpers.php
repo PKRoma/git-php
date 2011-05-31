@@ -134,7 +134,7 @@ function html_pages() {
   }
 }
 
-function html_footer()  {
+function html_footer($text = '')  {
   global $git_embed;
   global $git_logo;
 

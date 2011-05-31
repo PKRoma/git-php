@@ -65,7 +65,7 @@ function info_text()
   global $repo_http_relpath;
   ?>
   <div align="center">
-    <div class="githead">Created GIT project <?php echo $pName?></div>
+    <div class="githead">Created GIT project: <a href="git.php?p=<?php echo $pName?>"><?php echo $pName?></a></div>
     <div class="content">
       <p>So, what's next?<br />
       You can connect your local repository to the remote repository just created as follows:</p>
@@ -78,7 +78,7 @@ function info_text()
     </div>
   </div>
 <?php
-  html_footer();
+  html_footer("<center><a href='git.php?p=".$pName."'>Go to the created repository</a></center>");
 }
 
 function error($text)

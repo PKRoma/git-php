@@ -27,7 +27,7 @@
     $repo_index = "index.aux";
     
     /* The directory where repo directories resist */
-    $repo_directory = "/opt/lampp/htdocs/git-php/repo/";
+    $repo_directory = "";
     
     /* The date format to show the dates of commits */
     $git_date_format = 'd.m.Y (H:i)';

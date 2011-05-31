@@ -563,7 +563,7 @@ function get_last($repopath) {
   $out = array();
   $cmd = "GIT_DIR=".escapeshellarg($repopath) . " git-rev-list  --header --max-count=1 HEAD";
   $cmd .= " | grep -a committer";
-  $cmd .= " | cut -d' ' -f5-6";
+  $cmd .= " | sed -n -e 's/.*> *//p'";
   $date = exec($cmd, &$out);
   return date($git_date_format, (int)$date);
 }

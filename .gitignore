@@ -8,6 +8,7 @@
 *.*~
 *.?#?
 Makefile~
+config.php
 
 #directories to ignore
 
